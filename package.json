@@ -1,0 +1,16 @@
+{
+  "name": "bdp-page-api",
+  "version": "0.8.0",
+  "description": "The Page javascript API in Big Data Processor",
+  "main": "bdp-page-api.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "jsdoc -c jsdoc.json ./bdp-page-api.js ./README.md"
+  },
+  "author": "Chi Yang",
+  "license": "MIT",
+  "devDependencies": {
+    "docdash": "^1.2.0",
+    "jsdoc": "^3.6.5"
+  }
+}
