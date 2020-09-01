@@ -1,5 +1,7 @@
 # The Page API in Big Data Processor
 
+([Click to view the jsDoc on Github Pages](https://big-data-processor.github.io/bdp-page-api/)).
+
 ## **Introduction**
 Workflow or package developers can freely design web interfaces to provide documentations, guide users to execute workflows, or visualize results interactively, etc.
 In Big Data Processor (BDP), we provide a web sandbox environments to display these freely customized `Pages`.
