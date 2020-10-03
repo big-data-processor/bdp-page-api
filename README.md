@@ -86,8 +86,8 @@ The following functions may leave the current Page and navigate to another Page.
 ### **5. Result related API**
 * <a href='./BdpPageAPI.html#updateResultInfo'>updateResultInfo</a>: Update the metadata of a Result record.
 * <a href='./BdpPageAPI.html#deleteResult'>deleteResult</a>: Delete the Result record. All output DataFile records of this Result are also deleted.
-* stopResult: Stop a task which corresponds to a Result record. (coming soon.)
-* resumeResult: Stop a task which corresponds to a Result record. (coming soon.)
+* <a href='./BdpPageAPI.html#stopResult'>stopResult</a>: Stop a task which corresponds to a Result record.
+* resumeResult: Stop a task which corresponds to a Result record. (coming soon)
 
 ### **6. Watch server changes**
 Using these functions to register listener functions (or event handlers). These registered functions will be called once the BDP receives state updates.
