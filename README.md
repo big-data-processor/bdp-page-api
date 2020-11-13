@@ -19,7 +19,7 @@ In this way, Page developers can easily get the information by just calling java
 To use the API, you need to include the javascript file in your Page.
 
 ```
-<script src="/assets/pages/bdp-page-api.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/big-data-processor/bdp-page-api/bdp-page-api.js"></script>
 ```
 
 Next, you need to new an API instance and then call the `.initialize()` function to make a handshake with the BDP web client.
