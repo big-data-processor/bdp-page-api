@@ -996,7 +996,7 @@ class BdpPageAPI {
    * @description get the status whether the current page is in full-page mode or not.
    */
   async isFullPage() {
-    return await this._callBdpApi('toggleFullPage');
+    return await this._callBdpApi('isFullPage');
   }
 
   /**
