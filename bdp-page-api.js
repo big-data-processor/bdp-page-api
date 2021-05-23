@@ -670,7 +670,7 @@ class BdpPageAPI {
    * @memberof BdpPageAPI
    */
   async navigateToStaticPage(fileID) {
-    await this._callBdpApi('navigateToProxyPage', {fileID});
+    await this._callBdpApi('navigateToStaticPage', {fileID});
   }
 
   /**
