@@ -65,6 +65,8 @@ The following functions may leave the current Page and navigate to another Page.
 * <a href='./BdpPageAPI.html#navigateToFilePage'>navigateToFilePage</a>: Navigate to a File Page.
 * <a href='./BdpPageAPI.html#navigateToResultPage'>navigateToResultPage</a>: Navigate to a Result Page.
 * <a href='./BdpPageAPI.html#navigateToProjectPage'>navigateToProjectPage</a>: Navigate to a Project Page.
+* <a href='./BdpPageAPI.html#navigateToProxyPage'>navigateToProxyPage</a>: Navigate to a Proxy Page corresponding to a Result record.
+* <a href='./BdpPageAPI.html#navigateToStaticPage'>navigateToStaticPage</a>: Navigate to a Static Page corresponding to a folder DataFile record.
 * <a href='./BdpPageAPI.html#openFileLink'>openFileLink</a>: Open a new window to display the DataFile record.
 * <a href='./BdpPageAPI.html#openResultLink'>openResultLink</a>: Open a new window to display the Result record.
 * <a href='./BdpPageAPI.html#openStaticLink'>openStaticLink</a>: Open a new window to directly display the file or file list in a Folder.

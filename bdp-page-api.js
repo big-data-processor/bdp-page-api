@@ -655,6 +655,26 @@ class BdpPageAPI {
 
   /**
    * @async
+   * @function BdpPageAPI#navigateToProxyPage
+   * @param {*} resultID The ID of the Result record to view its proxy page (Note that the task must be set to enable the web proxy.)
+   * @description Navigate to a Proxy Page.
+   */
+  async navigateToProxyPage(resultID) {
+    await this._callBdpApi('navigateToProxyPage', {resultID});
+  }
+
+  /**
+   * @async
+   * @function BdpPageAPI#navigateToStaticPage
+   * @param {*} fileID The DataFile id of the folder type to view its contained files.
+   * @memberof BdpPageAPI
+   */
+  async navigateToStaticPage(fileID) {
+    await this._callBdpApi('navigateToProxyPage', {fileID});
+  }
+
+  /**
+   * @async
    * @function BdpPageAPI#navigateToBdpDataFile
    * @param {string} fileID The ID of the DataFile record to view
    * @description Navigate to view the DataFile record. Similar to the `BdpPageAPI.openFileLink` function except that it does not open a new window. This will leave the current Page.
