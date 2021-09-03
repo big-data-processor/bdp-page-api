@@ -3,7 +3,7 @@
  * @description An internal functions to process Events in Browsers.
  */
 
-class BdpEventEmitter{
+ class BdpEventEmitter{
   constructor(){
     this.events = {};
   }
@@ -307,7 +307,7 @@ class BdpPageAPI {
    
   constructor() {
     this._initialized = false;
-
+    this._serviceId = '';
     /**
      * @function BdpPageAPI~_registerEventListener
      * @param {string} eventId
@@ -369,6 +369,7 @@ class BdpPageAPI {
      */
     this._callBdpApi = async (method, data, ID) => {
       if (!ID) { ID = this._newID(); }
+      ID = this._serviceId ? this._serviceId + ':' + ID : ID;
       window.parent.postMessage({call: method, value: data, id: ID, type: 'sent'}, '*');
       return new Promise((resolve, reject) => this.apiEmitter.once(ID, (data) => data.err ? reject(data.err) : resolve(data.value)));
     };
@@ -414,7 +415,8 @@ class BdpPageAPI {
         this.listenErrors(errorListenFn);
       }
     }
-    await this._callBdpApi('handshake');
+    this._serviceId = await this._callBdpApi('handshake') || '';
+    console.log(this._serviceId);
     this._initialized = true;
   }
 
