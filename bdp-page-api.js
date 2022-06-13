@@ -1329,7 +1329,7 @@ class BdpPageAPI {
 
   /**
    * @async
-   * @function BdpPageAPI#dataStorePut
+   * @function BdpPageAPI#dataStoreDelete
    * @param {string} storeName the name of the data store in the indexedDB
    * @param {string[]} dataKeys the key array for the data records to be deleted
    * @return {string} returns `ok` if successfully deleting data in the indexedDB.
