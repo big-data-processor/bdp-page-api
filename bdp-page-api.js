@@ -1329,6 +1329,17 @@ class BdpPageAPI {
 
   /**
    * @async
+   * @function BdpPageAPI#dataStorePut
+   * @param {string} storeName the name of the data store in the indexedDB
+   * @param {string[]} dataKeys the key array for the data records to be deleted
+   * @return {string} returns `ok` if successfully deleting data in the indexedDB.
+   * @description This function performs the delete method.
+   */
+  async dataStoreDelete(storeName, dataKeys) {
+    return await this._callBdpApi('dataStoreDelete', {storeName: storeName, dataKeys: dataKeys});
+  }
+  /**
+   * @async
    * @function BdpPageAPI#dataStoreCount
    * @param {string} storeName the name of the data store in the indexedDB
    * @param {string | IDBKeyRange} queryKey (Optional) the queryKeyRange specify the desired query key condition.
