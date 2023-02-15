@@ -1268,16 +1268,24 @@ class BdpPageAPI {
    * @param {string | IDBKeyRange} query (Optional)
    * @param {string} indexName (Optional)
    * @param {'next' | 'nextunique' | 'prev' | 'prevunique'} direction (Optional)
+   * @param {function} controllerGetterFn (Optional) This function callback is used for the Page to get the query controller object. Calling the stop function of this controller object can stop the the whole query process.
    * @return {string} returns `ok` if successfully queried data in the indexedDB.
    * @description Query data in a dataStore. The `iterateFn` will be called with each of the resulting data records.
    */
-  async dataStoreQuery(storeName, iterateFn, query, indexName, direction) {
+  async dataStoreQuery(storeName, iterateFn, query, indexName, direction, controllerGetterFn) {
     const theID = this._newID();
     if (typeof direction === 'function') {
       iterateFn = direction;
       direction = 'next';
     }
     if (!iterateFn || typeof iterateFn !== 'function') { return; }
+    if (controllerGetterFn && typeof controllerGetterFn === 'function' ) {
+      controllerGetterFn({
+        stop: async () => {
+          await this._callBdpApi('dataStoreQueryStop', {queryProcessId: theID});
+        }
+      });
+    }
     this._registerEventListener(theID, iterateFn);
     const result = await this._callBdpApi('dataStoreQuery', {storeName: storeName, query: query, indexName: indexName, direction: direction}, theID);
     this._removeEventListener(theID, iterateFn);

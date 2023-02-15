@@ -1,6 +1,6 @@
 {
   "name": "bdp-page-api",
-  "version": "0.8.1",
+  "version": "0.8.2",
   "description": "The Page javascript API in Big Data Processor",
   "main": "bdp-page-api.js",
   "scripts": {
