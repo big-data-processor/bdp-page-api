@@ -3,7 +3,7 @@
  * @description An internal functions to process Events in Browsers.
  */
 
- class BdpEventEmitter{
+class BdpEventEmitter{
   constructor(){
     this.events = {};
   }
@@ -1278,16 +1278,13 @@ class BdpPageAPI {
    */
   async dataStoreQuery(storeName, iterateFn, query, indexName, direction, controllerGetterFn) {
     const theID = this._newID();
-    // if (typeof direction === 'function') {
-    //   iterateFn = direction;
-    //   direction = 'next';
-    // }
     if (!direction) direction = 'next';
     if (!iterateFn || typeof iterateFn !== 'function') { return; }
     if (controllerGetterFn && typeof controllerGetterFn === 'function' ) {
       controllerGetterFn({
-        stop: async function() {
-          await this._callBdpApi('dataStoreQueryStop', {queryProcessId: theID});
+        stop: async () => {
+          const stopProcId = this._serviceId ? `${this._serviceId}:${theID}` : theID;
+          await this._callBdpApi('dataStoreQueryStop', {queryProcessId: stopProcId});
         }
       });
     }
