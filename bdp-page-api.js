@@ -315,6 +315,7 @@ class BdpPageAPI {
      * @description An **internal** function to register event listener by the eventId and a function.
      */
     this._registerEventListener = (eventId, fn) => {
+      eventId = this._serviceId ? `${this._serviceId}:${eventId}` : eventId;
       this.eventEmitter.on(eventId, fn);
     };
 
@@ -325,6 +326,7 @@ class BdpPageAPI {
      * @description An **internal** function to remove event listener by the eventId and a function.
      */
     this._removeEventListener = (eventId, fn) => {
+      eventId = this._serviceId ? `${this._serviceId}:${eventId}` : eventId;
       this.eventEmitter.removeListener(eventId, fn);
     }
 
@@ -335,6 +337,7 @@ class BdpPageAPI {
      * @description An **internal** function to register error listener by the eventId and a function.
      */
     this._registerErrorListener = (eventId, fn) => {
+      eventId = this._serviceId ? `${this._serviceId}:${eventId}` : eventId;
       this.errorEmitter.on(eventId, fn);
     };
 
@@ -345,6 +348,7 @@ class BdpPageAPI {
      * @description An **internal** function to register error listener by the eventId and a function.
      */
     this._removeErrorListener = (eventId, fn) => {
+      eventId = this._serviceId ? `${this._serviceId}:${eventId}` : eventId;
       this.errorEmitter.removeListener(eventId, fn);
     }
 
@@ -1274,14 +1278,15 @@ class BdpPageAPI {
    */
   async dataStoreQuery(storeName, iterateFn, query, indexName, direction, controllerGetterFn) {
     const theID = this._newID();
-    if (typeof direction === 'function') {
-      iterateFn = direction;
-      direction = 'next';
-    }
+    // if (typeof direction === 'function') {
+    //   iterateFn = direction;
+    //   direction = 'next';
+    // }
+    if (!direction) direction = 'next';
     if (!iterateFn || typeof iterateFn !== 'function') { return; }
     if (controllerGetterFn && typeof controllerGetterFn === 'function' ) {
       controllerGetterFn({
-        stop: async () => {
+        stop: async function() {
           await this._callBdpApi('dataStoreQueryStop', {queryProcessId: theID});
         }
       });
